@@ -1,0 +1,9 @@
+.venv
+.env
+db.sqlite3
+*pyc
+tailwindcss/
+static/
+media/
+.idea
+buildcss.sh
