@@ -1,5 +1,9 @@
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
+from django.urls import reverse_lazy
+
+
+from .forms import ContactForm
 
 # Create your views here.
 
@@ -12,4 +16,15 @@ class AboutView(TemplateView):
 
 
 class ContactView(FormView):
-    pass
+    template_name = 'core/contact.html'
+    form_class = ContactForm
+    success_url = reverse_lazy('core:message_sent')
+
+    def form_valid(self, form):
+        form.send_email()
+        return super().form_valid(form)
+
+
+class ContactMessageSentView(TemplateView):
+    template_name = 'core/message_sent.html'
+

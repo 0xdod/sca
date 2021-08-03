@@ -1,4 +1,4 @@
-from django.test import SimpleTestCase
+from django.test import SimpleTestCase, TestCase
 from django.urls import reverse
 
 # Create your tests here.
@@ -31,3 +31,19 @@ class TestAboutView(SimpleTestCase):
         response = self.client.get(reverse('core:about'))
         self.assertContains(response, 'About us')
 
+
+class TestContactForm(TestCase):
+    # test method send email
+    pass
+
+
+class TestContactView(TestCase):
+    # test POST request, success email is sent, failure no email is sent
+    # test redirect
+    def test_statusOK(self):
+        response = self.client.get(reverse('core:contact'))
+        self.assertEquals(response.status_code, 200)
+
+    def test_template_used(self):
+        response = self.client.get(reverse('core:contact'))
+        self.assertTemplateUsed(response, 'core/contact.html')
