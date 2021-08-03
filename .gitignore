@@ -1,9 +1,12 @@
 .venv
 .env
 db.sqlite3
+__pycache__/
 *pyc
 tailwindcss/
 static/
+staticfiles/
 media/
 .idea
 buildcss.sh
+TODO
