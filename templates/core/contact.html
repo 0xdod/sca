@@ -2,10 +2,10 @@
 
 {% block head_title %} Contact us {% endblock head_title %}
 
-{% block content %}
+{% block main %}
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button>Send Message</button>
+        <button class="bg-purple-600 text-white font-semibold shadow-md rounded-2xl px-4 py-1 focus:ring ring-purple-400 hover:bg-purple-500">Send Message</button>
     </form>
-{% endblock content %}
+{% endblock main %}

@@ -1,0 +1,20 @@
+<nav class="fixed top-0 left-0 w-full z-40 bg-white px-8 py-1 shadow-md flex items-center justify-between">
+    <section class="branding flex">
+       <p class="font-semibold uppercase">
+           <a href="{% url "core:index" %}">Savor<span class="text-purple-500">cakes</span> Academy</a>
+       </p>
+    </section>
+
+    <section class="flex">
+        <a href="#" class="block py-1 mr-4 hover:underline hover:text-purple-600 font-light">Courses</a>
+        <a href="{% url "core:about" %}" class="block py-1 mr-4 hover:underline hover:text-purple-600 font-light">About</a>
+        <a href="#" class="block py-1 mr-4 hover:underline hover:text-purple-600 font-light">Blog</a>
+        <a href="#" class="block py-1 mr-4 hover:underline hover:text-purple-600 font-light">Private classes</a>
+        <a href="{% url "core:contact" %}" class="block py-1 hover:underline hover:text-purple-600 font-light">Contact</a>
+    </section>
+
+    <section class="flex">
+        <a href="#" class="py-1 mr-1 bg-purple-600 px-4 rounded shadow-md hover:bg-purple-500 text-white focus:ring ring-purple-400">Log in</a>
+        <a href="#" class="py-1 px-4 text-purple-600 rounded shadow-md border border-purple-600 focus:ring ring-purple-400 hover:bg-purple-400 hover:text-white">Sign up</a>
+    </section>
+</nav>

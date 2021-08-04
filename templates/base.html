@@ -5,11 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block head_title%} {% endblock head_title %} &ndash; {{ site_name }}</title>
-    {# <link rel="stylesheet" href="{% static "css/styles.css" %}"> #}
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    {% block styles %}{% endblock styles %}
 </head>
-<body>
-    {% block content %}
+<body class="min-h-screen flex flex-col">
+    {% block header %}
+        {% include "core/_nav.html" %}
+    {% endblock header %}
 
-    {% endblock content %}
+    <main class="pt-10 text-gray-800">
+        {% block main %}
+        {% endblock main %}
+    </main>
+
 </body>
 </html>
