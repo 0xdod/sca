@@ -8,15 +8,21 @@
     <link rel="stylesheet" href="{% static "css/styles.css" %}">
     {% block styles %}{% endblock styles %}
 </head>
-<body class="min-h-screen flex flex-col">
-    {% block header %}
-        {% include "core/_nav.html" %}
-    {% endblock header %}
+<body class="min-h-screen flex flex-col bg-gray-50 text-gray-800 pt-12">
+    {% block nav %}
+      {% include "core/_nav.html" %}
+    {% endblock nav %}
 
-    <main class="pt-10 text-gray-800">
-        {% block main %}
-        {% endblock main %}
+    {% block header %}{% endblock header %}
+
+    {% block content %}
+    <main class="my-8 mx-12">
+        {% block main %}{% endblock main %}
     </main>
+    {% endblock content %}
 
+    {% block footer %}{% endblock footer %}
+
+    {% block scripts %}{% endblock scripts %}
 </body>
 </html>

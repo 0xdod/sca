@@ -10,10 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+
+# App constants
+domain = "savorcakesacademy.com"
 
 
 # Application definition
@@ -25,11 +31,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
+    # 3rd party apps
+    "crispy_forms",
+    "crispy_tailwind",
     # Local apps
-    'sca.accounts',
-    'sca.core',
-    'sca.courses',
+    "sca.accounts",
+    "sca.core",
+    "sca.courses",
 ]
 
 MIDDLEWARE = [
@@ -57,7 +65,6 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-
                 # Local context processor
                 "sca.core.context_processors.site_name",
             ],
@@ -66,17 +73,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "sca_project.wsgi.application"
-
-
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
 
 
 # Password validation
@@ -118,11 +114,21 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "static/",
 ]
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "staticfiles/"
 
-MEDIA_ROOT = BASE_DIR / "media"
+
+# Media files, files uploaded by users
+
+MEDIA_ROOT = BASE_DIR / "media/"
 
 MEDIA_URL = "/media/"
+
+
+# Crispy form
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"

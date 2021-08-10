@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
+{% load tailwind_filters%}
+
 {% block head_title %} Contact us {% endblock head_title %}
 
 {% block main %}
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="bg-purple-600 text-white font-semibold shadow-md rounded-2xl px-4 py-1 focus:ring ring-purple-400 hover:bg-purple-500">Send Message</button>
-    </form>
+<form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button class="px-8 py-2 bg-purple-600 text-white font-semibold shadow-md rounded-full focus:ring ring-purple-400 hover:bg-purple-500">Send Message</button>
+</form>
 {% endblock main %}

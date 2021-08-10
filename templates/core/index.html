@@ -2,72 +2,122 @@
 
 {% load static %}
 
-
 {% block head_title %} Home {% endblock head_title %}
 
 {% block styles %}
-    <style>
-      .gradient {
-        background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,0.6)),
-        url('{% static "img/hero.jpg" %}');
-        background-position: top;
-        background-size: cover;
-        background-repeat:  no-repeat;
-      }
+<style>
+  .gradient {
+    background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,0.6)),
+    url('{% static "img/hero-lq.jpg" %}');
+    background-position: top;
+    background-size: cover;
+    background-repeat:  no-repeat;
+  }
 
-      .header {
-        height: 85vh;
-        overflow:  hidden;
-      }
+  .header {
+    height: 85vh;
+    overflow:  hidden;
+  }
 
-      {% include "core/_animations.html" %}
+  {% include "core/_animations.html" %}
 
-      .move-in-left {
-        animation: moveInLeft 1s ease-in-out;
-      }
+  .move-in-left {
+    animation: moveInLeft 1s ease-in-out;
+  }
 
-      .move-in-right {
-        animation: moveInRight 1s ease-in-out;
-      }
+  .move-in-right {
+    animation: moveInRight 1s ease-in-out;
+  }
 
-      h1.move-in-left {
-         letter-spacing: 20.5px;
-      }
+  h1.move-in-left {
+     letter-spacing: 20.5px;
+  }
 
-      p.move-in-right {
-        letter-spacing:  13.5px;
-      }
-   </style>
+  p.move-in-right {
+    letter-spacing:  13.5px;
+  }
+</style>
 {% endblock styles %}
 
+{% block header %}
+<header class="header gradient text-white flex justify-center items-center">
+  <div class="uppercase text-center">
+    <h1 class="move-in-left my-4 text-5xl font-bold">
+      Savor<span class="text-purple-500">cakes</span> Academy
+    </h1>
+    <p class="move-in-right">The Ultimate baker's choice</p>
+  </div>
+</header>
+{% endblock header%}
 
+{% block content %}
 
-{% block main %}
- <div class="header gradient text-white flex justify-center items-center mb-6">
-      <div class="uppercase text-center">
-          <h1 class="move-in-left my-4 text-5xl font-bold">Savor<span class="text-purple-500">cakes</span> Academy</h1>
-          <p class="move-in-right">The Ultimate baker's choice</p>
+<main class="mx-8">
+  <section class="py-8">
+    <h2
+      class="mb-6 font-semibold text-center text-2xl uppercase text-purple-600"
+    >
+      Welcome
+    </h2>
+    <p class="my-2">
+      Welcome to Savorcakes Academy, Lorem ipsum dolor, sit amet consectetur
+      adipisicing elit. Esse aut saepe laborum ad accusamus iusto, tempora
+      doloribus fuga, facilis eum blanditiis id maiores amet suscipit, dolorum,
+      ullam earum excepturi nostrum.
+    </p>
+  </section>
+
+  <section class="py-8">
+    <h2
+      class="mb-6 font-semibold text-center text-2xl uppercase text-purple-600"
+    >
+      Featured courses
+    </h2>
+    <div class="grid grid-cols-3 gap-16">
+      {% for course in latest_courses  %}
+        {% include "courses/_card.html" %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="py-8">
+    <h2
+      class="mb-6 font-semibold text-center text-2xl uppercase text-purple-600"
+    >
+      What we are offering
+    </h2>
+    <div class="flex">
+      <p class="my-2">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit, cum
+        consequatur laboriosam quo atque provident ea officia doloribus ut
+        officiis commodi beatae debitis, pariatur cumque facilis ipsa eos enim
+        nesciunt.
+      </p>
+
+      <p class="my-2">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit, cum
+        consequatur laboriosam quo atque provident ea officia doloribus ut
+        officiis commodi beatae debitis, pariatur cumque facilis ipsa eos enim
+        nesciunt.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-8">
+    <h2
+      class="mb-6 font-semibold text-center text-2xl uppercase text-purple-600"
+    >
+      What people are saying
+    </h2>
+    <div class="flex">
+      <div class="box">
+        <blockquote></blockquote>
+        <div class="user">
+          <img src="" alt="" />
+          <p class="username"></p>
+        </div>
       </div>
- </div>
-
- <section class="mx-6 py-8">
-    <h2 class="my-2 font-semibold text-center text-3xl uppercase text-purple-600">Welcome</h2>
-    <p class="my-2 px-8">Welcome to Savorcakes Academy, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse aut saepe laborum ad accusamus iusto, tempora doloribus fuga, facilis eum blanditiis id maiores amet suscipit, dolorum, ullam earum excepturi nostrum.</p>
- </section>
-
- <section class="mx-6 py-8">
-     <h2 class="my-2 font-semibold text-center text-3xl uppercase text-purple-600">Featured courses</h2>
-     <div class="flex"></div>
- </section>
-
- <section class="mx-6 py-8">
-    <h2 class="my-2 font-semibold text-center text-3xl uppercase text-purple-600">What we are offering</h2>
-    <div class="flex"></div>
- </section>
-
- <section class="mx-6 py-8">
-     <h2 class="my-2 font-semibold text-center text-3xl uppercase text-purple-600">What people are saying</h2>
-     <div class="flex"></div>
- </section>
-{% endblock main %}
-
+    </div>
+  </section>
+</main>
+{% endblock content %}

@@ -14,3 +14,12 @@ ALLOWED_HOSTS = []
 SECRET_KEY = "j@6b^%-&i+f&9fortranetmx=!e#7e)^dn2(np94_b-!ly&xyz"
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+DATABASES = {
+    'default':  {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'savorcakes',
+        'USER': 'damilola',
+        'PASSWORD': 'Omonefe97'
+    },
+}
