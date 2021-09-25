@@ -1,3 +1,4 @@
+import pytest
 from django.urls import reverse
 from django.core import mail
 
@@ -6,9 +7,12 @@ from sca.testutils import SimpleTestCase
 
 
 
+pytestmark = pytest.mark.django_db
 
+@pytest.mark.django_db
 class TestIndexView(SimpleTestCase):
 
+    pytestmark = pytest.mark.django_db
     def test_statusOK(self):
         self.get_check_200(reverse('core:index'))
 
@@ -31,10 +35,10 @@ class TestContactView(SimpleTestCase):
         '''Test that form redirects to message:sent page on successful POST'''
 
         data = {
-            "name": "Lorem ipsum",
-            "email": "email@hey.com",
-            "message": "lorem ipsum",
-        }
+                "name": "Lorem ipsum",
+                "email": "email@hey.com",
+                "message": "lorem ipsum",
+                }
         resp = self.client.post(reverse("core:contact"), data=data)
 
         assert len(mail.outbox) == 1
