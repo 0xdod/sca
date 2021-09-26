@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 
 from sca.core.models import TimeStampedModel
@@ -7,7 +7,7 @@ from .managers import CustomUserManager
 
 
 # Create your models here.
-class User(TimeStampedModel, AbstractBaseUser):
+class User(TimeStampedModel, AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField('email address', unique=True)
