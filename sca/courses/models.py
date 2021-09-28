@@ -1,11 +1,16 @@
 from django.db import models
 from django.utils.text import slugify
+from django.urls import reverse
 
 from sca.core.models import TimeStampedModel
 
 
 # Create your models here.
 class Course(TimeStampedModel):
+    STATUS_CHOICES = (
+            ('published', 'Published'),
+            ('draft', 'Draft'),
+            )
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=250)
     overview = models.TextField(blank=True, null=True)
@@ -15,6 +20,8 @@ class Course(TimeStampedModel):
         default="no_image.png",
     )
     price = models.DecimalField(max_digits=8, decimal_places=2)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES,
+            default='draft')
 
     class Meta:
         index_together = [
@@ -31,6 +38,8 @@ class Course(TimeStampedModel):
 
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse('courses:detail', args=[self.id, self.slug])
 
 class Lesson(TimeStampedModel):
     title = models.CharField(max_length=200)
