@@ -50,6 +50,8 @@ class Lesson(TimeStampedModel):
     order = models.PositiveIntegerField()
     overview = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
+    video = models.FileField(upload_to="videos", null=True, blank=True)
+    url = models.URLField("video url", blank=True)
 
     class Meta:
         index_together = [
@@ -60,7 +62,15 @@ class Lesson(TimeStampedModel):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+
+        if not self.url:
+            self.url = self.video.url
+
         super().save(args, kwargs)
 
     def __str__(self):
         return f"{self.order}. {self.title}"
+    
+    def get_absolute_url(self):
+        return reverse('courses:lesson_detail', args=[self.course.id,
+            self.course.slug, self.id, self.slug])

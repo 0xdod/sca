@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block head_title %} {{lesson.title}} {% endblock head_title %}
+
+{% block styles %}
+    <style>
+    </style>
+{% endblock styles %}
+
+{% block main %}
+<div>
+    <div>
+        <video class="" height="400" width="" preload="none" autoplay="autoplay" controls>
+            <source src="{{ lesson.video.url }}" type="video/mp4" media="">
+        </video>
+    </div>
+   <p>{{ lesson.overview }}</p>
+</div>
+{% endblock main %}
