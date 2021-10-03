@@ -4,13 +4,13 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOSTS')]
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')]
 
 DATABASES = {
         'default':  {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': '',
-            'USER': '',
+            'NAME': 'sca',
+            'USER': 'admin',
             'PASSWORD': ''
             },
         }
