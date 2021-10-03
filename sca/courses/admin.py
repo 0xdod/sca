@@ -20,3 +20,4 @@ class CourseAdmin(admin.ModelAdmin):
 @admin.register(Lesson)
 class LessonAdmin(admin.ModelAdmin):
     list_display = ["order", "title", "course", "slug"]
+    prepopulated_fields = {"slug": ("title", )}
