@@ -33,3 +33,7 @@ class ContactView(FormView):
 
 class ContactMessageSentView(TemplateView):
     template_name = "core/message_sent.html"
+
+
+def dashboard(request):
+    pass
