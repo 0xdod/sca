@@ -3,18 +3,10 @@
 {% load tailwind_filters %}
 
 {% block styles %}
-<style type="text/css" media="screen">    
-  .gradient {
-    background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,0.6)),
-    url('{% static "images/hero_1.jpg" %}');
-    background-position: top;
-    background-size: cover;
-    background-repeat:  no-repeat;
-  }
-</style>
+{{ block.super }}
 {% endblock styles %}
 
-{% block title %} Log in - Savorcakes Academy {%endblock title %} 
+{% block head_title %} Log in {% endblock head_title %} 
 
 
 {% block main %}

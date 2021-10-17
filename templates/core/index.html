@@ -29,6 +29,10 @@
     animation: moveInRight 1s ease-in-out;
   }
 
+  .move-in-bottom {
+    animation: moveInBottom 1s ease-in-out;
+  }
+
   h1.move-in-left {
      letter-spacing: 20.5px;
   }
@@ -51,7 +55,7 @@
     <p class="move-in-right">The Ultimate baker's choice</p>
   </div>
   <a href="{% url "courses:list" %}"
-    class="py-4 px-12 bg-purple-600 rounded-full shadow hover:bg-purple-500 text-white focus:ring ring-purple-400 mr-1 text-xl">Explore courses</a>
+    class="py-4 px-12 bg-purple-600 rounded-full shadow hover:bg-purple-500 text-white focus:ring ring-purple-400 mr-1 text-xl move-in-bottom">Explore courses</a>
 </header>
 {% endblock header%}
 
@@ -84,7 +88,7 @@
     <h2
       class="mb-6 font-semibold text-center text-2xl uppercase text-purple-600"
     >
-      What we are offering
+      What we offer
     </h2>
     <div class="flex">
       <p class="my-2">

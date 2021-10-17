@@ -1,13 +1,20 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-     <title> {% block title %} {% endblock title %}</title>
+{% extends "base.html" %}
 
-    <link rel="stylesheet" href="{% static "css/styles.css" %}">
-    {% block styles %}{% endblock styles %}
-</head>
+{% load static %}
+
+{% block styles %}
+<style type="text/css" media="screen">    
+    .gradient {
+        background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,0.6)),
+        url('{% static "images/hero_1.jpg" %}');
+        background-position: top;
+        background-size: cover;
+        background-repeat:  no-repeat;
+      }
+</style>
+{% endblock styles %}
+
+{% block body %} 
 <body>
     {% block content %}
     <main> 
@@ -15,8 +22,7 @@
     </main>
     {% endblock content %}
 
-
     {% block footer %}{% endblock footer %}
     {% block scripts %}{% endblock scripts %}
 </body>
-</html>
+{% endblock body %}
