@@ -38,4 +38,10 @@ class ContactMessageSentView(TemplateView):
 
 @login_required
 def dashboard(request):
-    return render(request, 'core/dashboard.html', {})
+    enrolled_courses = request.user.courses.all()
+    recommended = Course.objects.all().exclude(id__in=enrolled_courses)
+    context = {
+    'enrolled_courses': enrolled_courses,
+    'recommended_courses': recommended,
+    }
+    return render(request, 'core/dashboard.html', context)

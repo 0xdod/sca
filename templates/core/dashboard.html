@@ -1,29 +1,50 @@
 {% extends "base.html" %}
+{% load core_tags %}
+{% load static %}
 
 {% block head_title %} Dashboard {% endblock head_title%}
 
 {% block main %}
-<section class="mb-8">
-    <h2 class="mb-4 font-semibold text-lg">Registered courses</h2>
 
-    {% for course in enrolled_courses %}
-    <div class="grid grid-cols-3 gap-16">
-       {% include "courses/_card.html" %} 
+<div class="flex items-center mb-4 border-b-2 pb-4 border-purple-900">
+    <div class="rounded-full overflow-hidden w-16 h-16 flex items-center justify-center shadow-md mr-4">
+        <img src="{% static 'images/no_image_.png' %}" class="h-full max-w-full">
     </div>
-    {% empty %}
-    <p>You have not enrolled for any course, visit our  <a class="underline hover:text-purple-600" href="{% url "courses:list" %}">courses</a> page to select a course.</p>
+    <div class="flex item-center flex-col">
+        <h1 class="font-semibold text-2xl">{{ user.get_full_name }}</h1>
+        <strong class="font-bold">{{ user.email }}</strong>
+    </div>
+
+    <div class="ml-auto"><a href="{% url 'profile' %}" class="py-2 px-6 bg-purple-600 rounded-full shadow hover:bg-purple-500 text-white focus:ring ring-purple-400">Edit profile</a></div>
+</div>
+
+
+<section class="mb-8">
+    <h2 class="mb-4 font-semibold text-xl">In Progress</h2>
+
+    {% if enrolled_courses %}
+    <div class="grid grid-cols-3 gap-16">
+    {% for course in enrolled_courses %}
+       {% include "courses/_card.html" %} 
     {% endfor %}
+    </div>
+    {% else %}
+     <div>You have not enrolled for any course, visit our  <a class="underline hover:text-purple-600" href="{% url "courses:list" %}">courses</a> page to select a course.</div>
+    {% endif %}
 </section>
 
 
 <section>
-    <h2 class="mb-4 font-semibold text-lg"> Recommended courses </h2>
-    {% for course in recommended_courses %}
+    <h2 class="mb-4 font-semibold text-xl"> Recommended courses </h2>
+
+    {% if recommended_courses %}
     <div class="grid grid-cols-3 gap-16">
-       {% include "courses/_card.html" %} 
-    </div>
-    {% empty %}
-    <p>No recommended course</p>
+    {% for course in recommended_courses %}
+    {% include "courses/_card.html" %} 
     {% endfor %}
+    </div>
+    {% else %}
+    <p>No recommended course</p>
+    {% endif %}
 </section>
 {% endblock main %}

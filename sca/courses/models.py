@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.urls import reverse
+from django.conf import settings
 
 from sca.core.models import TimeStampedModel
 
@@ -22,6 +23,12 @@ class Course(TimeStampedModel):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES,
             default='draft')
+    students = models.ManyToManyField(settings.AUTH_USER_MODEL,
+                                      related_name='courses', through='UserCourse')
+
+    def student_progress(self, user_id):
+        return UserCourse.objects.get(course_id=self.pk, user_id=user_id).progress
+
 
     class Meta:
         index_together = [
@@ -74,3 +81,15 @@ class Lesson(TimeStampedModel):
     def get_absolute_url(self):
         return reverse('courses:lesson_detail', args=[self.course.id,
             self.course.slug, self.id, self.slug])
+
+
+class UserCourse(models.Model):
+    STATUS_CHOICES = (
+            ('completed', 'Completed'),
+            ('in_progress', 'In Progress'),
+        )
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    progress = models.PositiveIntegerField(default=0)
+    status = models.CharField(max_length=12, choices=STATUS_CHOICES,
+            default='in_progress')

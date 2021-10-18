@@ -15,8 +15,8 @@
 {% endblock styles %}
 
 {% block content %}
-<div>
-    <section class="flex video-section">
+<div class="mb-8">
+    <section class="flex video-section mb-8">
         <div class="bg-gray-900 h-full flex-1">
             <video class="block h-full w-full" preload="none" autoplay="autoplay" controls>
                 <source src="{{ lesson.url }}" type="video/mp4" media="video/mp4">
@@ -38,9 +38,16 @@
     </section>
 
 
-    <section class="px-8">
-        <h3 class="font-semibold mb-4">Overview</h3>
-        <p>{{ lesson.overview|linebreaks }}</p>
+    <section class="mx-8 border border-purple-800 border-4 rounded shadow overflow-hidden">
+        <div class="flex justify-between px-12 py-4 bg-purple-100">
+            <h3 class="font-semibold">Overview</h3>
+            <h3 class="font-semibold">Resources</h3>
+            <h3 class="font-semibold">Notes</h3>
+        </div>
+        <div class="px-8 py-4">
+            <p>{{ lesson.overview|linebreaks }}</p>
+        </div>
+        
     </section>
 </div>
 {% endblock content %}

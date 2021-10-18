@@ -6,6 +6,14 @@
 
 
 {% block main %}
-<h3>Account profile</h3>
+<div class="">
+	<h3 class="text-2xl font-semibold mb-8">Update your profile</h3>
+
+	<form method="POST" class="w-1/2">
+		{% csrf_token %}
+		{{ form|crispy }}
+		<button class="py-2 px-6 bg-purple-600 rounded-full shadow hover:bg-purple-500 text-white focus:ring ring-purple-400">Save changes</button>
+	</form>
+</div>
 
 {% endblock main %}
