@@ -7,7 +7,9 @@
 {% block styles %}
     <style>
         .header {
-            height: 50vh;
+            height: 65vh;
+            background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,0.3)),
+               linear-gradient(#7c3aed, #8b5cf6);
         }
     </style>
 {% endblock styles %}
@@ -24,7 +26,7 @@
         <span> Lessons: {{ course.lessons.all.count }} </span>
     </div>
 
-    <div class="z-40 w-96 absolute right-12 top-12 shadow-md rounded bg-white text-black">
+    <div class="z-40 w-96 absolute right-12 top-20 shadow-md rounded bg-white text-black">
         <img class="block w-full max-w-full rounded mx-auto" src="{{course.thumbnail.url}}" alt="course image">
         <div class="px-8 p-4">
             <p class="mb-4 text-gray-800">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod cillum dolore eu fugiat nulla pariatur</p>

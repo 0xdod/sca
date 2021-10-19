@@ -48,6 +48,9 @@ class Course(TimeStampedModel):
     def get_absolute_url(self):
         return reverse('courses:detail', args=[self.id, self.slug])
 
+    def last_lesson(self):
+        return self.lessons.all().first()
+
 class Lesson(TimeStampedModel):
     title = models.CharField(max_length=200)
     course = models.ForeignKey(to=Course,

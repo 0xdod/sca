@@ -1,3 +1,5 @@
+{% load core_tags %}
+
 <div class="card bg-white shadow rounded-lg flex flex-col pb-8">
   <div class="card-image">
     <img
@@ -12,8 +14,11 @@
     <p class="my-4 mx-8 font-semibold text-lg text-gray-600 uppercase">
       {{ course.title }}
     </p>
+    {% call_method user "is_enrolled" course.id as is_enrolled %}
+    
+    
     <a
-      href="{{ course.get_absolute_url }}"
+      href="{% if is_enrolled %}{{ course.last_lesson.get_absolute_url }}{% else %} {{ course.get_absolute_url }} {% endif %}"
       class="
         px-8
         py-2
@@ -26,7 +31,8 @@
         cursor-pointer
         mx-auto
       "
-      >Learn more <span>&rarr;</span></a
+      >{% if is_enrolled %} Resume course {% else %} Learn more <span>&rarr;</span> {% endif %}</a
     >
+    
   </div>
 </div>
