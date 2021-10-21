@@ -9,9 +9,9 @@ from sca.core.models import TimeStampedModel
 # Create your models here.
 class Course(TimeStampedModel):
     STATUS_CHOICES = (
-            ('published', 'Published'),
-            ('draft', 'Draft'),
-            )
+        ('published', 'Published'),
+        ('draft', 'Draft'),
+    )
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=250)
     overview = models.TextField(blank=True, null=True)
@@ -22,13 +22,12 @@ class Course(TimeStampedModel):
     )
     price = models.DecimalField(max_digits=8, decimal_places=2)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES,
-            default='draft')
+                              default='draft')
     students = models.ManyToManyField(settings.AUTH_USER_MODEL,
                                       related_name='courses', through='UserCourse')
 
     def student_progress(self, user_id):
         return UserCourse.objects.get(course_id=self.pk, user_id=user_id).progress
-
 
     class Meta:
         index_together = [
@@ -50,6 +49,7 @@ class Course(TimeStampedModel):
 
     def last_lesson(self):
         return self.lessons.all().first()
+
 
 class Lesson(TimeStampedModel):
     title = models.CharField(max_length=200)
@@ -80,19 +80,20 @@ class Lesson(TimeStampedModel):
 
     def __str__(self):
         return f"{self.order}. {self.title}"
-    
+
     def get_absolute_url(self):
         return reverse('courses:lesson_detail', args=[self.course.id,
-            self.course.slug, self.id, self.slug])
+                                                      self.course.slug, self.id, self.slug])
 
 
 class UserCourse(models.Model):
     STATUS_CHOICES = (
-            ('completed', 'Completed'),
-            ('in_progress', 'In Progress'),
-        )
+        ('completed', 'Completed'),
+        ('in_progress', 'In Progress'),
+    )
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
     progress = models.PositiveIntegerField(default=0)
     status = models.CharField(max_length=12, choices=STATUS_CHOICES,
-            default='in_progress')
+                              default='in_progress')

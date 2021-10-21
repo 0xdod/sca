@@ -23,6 +23,9 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = env('SECRET_KEY')
 
+RAVE_PUBLIC_KEY = env('RAVE_PUBLIC_KEY')
+RAVE_SECRET_KEY = env('RAVE_SECRET_KEY')
+
 # App constants
 domain = "savorcakesacademy.com"
 
@@ -48,6 +51,7 @@ INSTALLED_APPS = [
     "sca.accounts",
     "sca.core",
     "sca.courses",
+    "sca.payments",
 ]
 
 SITE_ID = 1

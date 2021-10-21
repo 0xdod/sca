@@ -5,10 +5,6 @@ from django.contrib import messages
 
 from .forms import UserForm
 
-# Create your views here.
-def profile(request):
-    return render(request, 'account/profile.html', {})
-
 
 class ProfileView(FormView):
     template_name = "account/profile.html"
