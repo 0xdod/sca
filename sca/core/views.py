@@ -1,6 +1,8 @@
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from .forms import ContactForm
 from ..courses.models import Course
@@ -33,3 +35,13 @@ class ContactView(FormView):
 
 class ContactMessageSentView(TemplateView):
     template_name = "core/message_sent.html"
+
+@login_required
+def dashboard(request):
+    enrolled_courses = request.user.courses.all()
+    recommended = Course.objects.all().exclude(id__in=enrolled_courses)
+    context = {
+    'enrolled_courses': enrolled_courses,
+    'recommended_courses': recommended,
+    }
+    return render(request, 'core/dashboard.html', context)

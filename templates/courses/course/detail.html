@@ -1,35 +1,81 @@
 {% extends "base.html" %}
 
+{% load core_tags %}
+
 {% block head_title %} {{course.title}} {% endblock head_title %}
 
 {% block styles %}
     <style>
         .header {
-            height: 50vh;
-            overflow:  hidden;
+            height: 65vh;
+            background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,0.3)),
+               linear-gradient(#7c3aed, #8b5cf6);
         }
     </style>
 {% endblock styles %}
 
 {% block header %}
-<header class="px-12 py-6 header bg-gradient-to-br from-purple-500 to-purple-600 flex flex-col text-white">
+<header class="px-12 py-6 header bg-gradient-to-br from-purple-500 to-purple-600
+        flex flex-col text-white relative"
+    >
     <h1 class="my-2 font-bold text-white uppercase">
         {{ course.title }}
     </h1>
-    <p>
-    <span> {{ course..overview }} </span> <br>
-    <span> Lessons: {{ course.lessons.all.count }} </span>
-    </p>
+    <div>
+        <p> {{ course..overview }} </p>
+        <span> Lessons: {{ course.lessons.all.count }} </span>
+    </div>
+
+    <div class="z-40 w-96 absolute right-12 top-20 shadow-md rounded bg-white text-black">
+        <img class="block w-full max-w-full rounded mx-auto" src="{{course.thumbnail.url}}" alt="course image">
+        <div class="px-8 p-4">
+            <p class="mb-4 text-gray-800">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod cillum dolore eu fugiat nulla pariatur</p>
+            <p class="text-right font-semibold text-lg px-4 my-2"> ${{ course.price }}</p>
+
+            {% call_method user "is_enrolled" course.id as is_enrolled %}
+
+            {% if is_enrolled %}
+            {% with first_lesson=course.lessons.all|first %}
+            <a href="{{first_lesson.get_absolute_url}}" class="px-8 py-2 rounded-full shadow-md focus:ring-2 focus:ring-green-400 bg-green-600 hover:bg-green-500 text-white text-center font-semibold cursor-pointer mx-auto block w-full"
+            > Resume course </a>
+            {% endwith %}
+            {% else %}
+            <form method="POST" action="{% url 'courses:buy_course' course.id %}">
+                {% csrf_token %}
+                <button class="px-8 py-2 rounded-full shadow-md focus:ring-2 focus:ring-green-400 bg-green-600 hover:bg-green-500 text-white text-center font-semibold cursor-pointer mx-auto block w-full"
+                > Buy </button>
+            </form>
+            {% endif %}
+            {% comment %}
+            <a href="{% url "courses:buy_course" course.id %}" class="px-8 py-2 rounded-full shadow-md focus:ring-2 focus:ring-green-400 bg-green-600 hover:bg-green-500 text-white text-center font-semibold cursor-pointer mx-auto block w-full"
+            > Buy </a>
+            {% endcomment %}
+        </div>
+        
+    </div>
     
     {% with course.lessons.all|first as l  %}    
-    <a href="{{ l.get_absolute_url}}">Go to lesson</a>
+        <a href="{{ l.get_absolute_url}}">Go to lesson</a>
     {% endwith %}
 
 </header>
 {% endblock header %}
 
 {% block main %}
-<div>
-   <p>This is a course, tell some story story here...</p>
-</div>
+<section class="w-1/2">
+    <h3 class="font-semibold mb-4">Overview</h3>
+    <p class="mb-4">{{ course.overview|linebreaks }}</p>
+</section>
+
+<section class="mt-8">
+    <h3 class="font-semibold mb-4">
+        <span> Course outline </span>
+    </h3>
+    <ul>
+        {% for lsn in course.lessons.all %}
+            <li>{{ lsn.title }}</li>
+        {% endfor %}
+    </ul>
+</section>
+   
 {% endblock main %}

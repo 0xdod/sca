@@ -5,9 +5,11 @@
 {% block head_title %} Contact us {% endblock head_title %}
 
 {% block main %}
-<form method="POST">
+<div class="bg-gray-200 flex w-1/2 px-12 py-6 justify-center shadow-md rounded">
+<form method="POST" class="flex-1">
     {% csrf_token %}
     {{ form|crispy }}
-    <button class="px-8 py-2 bg-purple-600 text-white font-semibold shadow-md rounded-full focus:ring ring-purple-400 hover:bg-purple-500">Send Message</button>
+    <button class="block w-full px-8 py-2 bg-purple-600 text-white font-semibold shadow-md rounded-full focus:ring ring-purple-400 hover:bg-purple-500">Send Message</button>
 </form>
+</div>
 {% endblock main %}

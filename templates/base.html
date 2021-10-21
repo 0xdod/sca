@@ -21,16 +21,14 @@
                font-family: 'Lato', sans-serif;
                background-color: #fafafa; 
            }
-           .global-footer {
+           .footer {
                background: linear-gradient(#041830,#080117);
-               color: #fff;
-               position: relative;
-               padding: 90px 45px;
            }
         </style>
     </head>
 
-    <body class="min-h-screen flex flex-col justify-between text-gray-800 pt-12">
+    {% block body %}
+    <body class="min-h-screen flex flex-col justify-between text-gray-800 pt-14">
         {% block nav %} {% include "core/_nav.html" %} {% endblock nav %} 
         {% block header %}{% endblock header %} 
         {% block content %}
@@ -39,4 +37,5 @@
         {% block footer %} {% include "core/_footer.html" %}  {% endblock footer %}
         {% block scripts %}{% endblock scripts %}
     </body>
+    {% endblock body %}
 </html>

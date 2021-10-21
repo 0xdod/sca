@@ -3,18 +3,10 @@
 {% load tailwind_filters %}
 
 {% block styles %}
-<style type="text/css" media="screen">    
-  .gradient {
-    background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,0.6)),
-    url('{% static "images/hero_1.jpg" %}');
-    background-position: top;
-    background-size: cover;
-    background-repeat:  no-repeat;
-  }
-</style>
+{{ block.super }}
 {% endblock styles %}
 
-{% block title %} Log in - Savorcakes Academy {%endblock title %} 
+{% block head_title %} Log in {% endblock head_title %} 
 
 
 {% block main %}
@@ -27,7 +19,7 @@
     <form action="" method="POST" accept-charset="utf-8">
       {%csrf_token%}
       {{ form|crispy }}
-      <button class="py-1 px-6 bg-purple-600 rounded-full shadow
+      <button class="py-2 px-6 bg-purple-600 rounded-full shadow
           hover:bg-purple-500 text-white focus:ring ring-purple-400 mr-1 w-full">Log in &rarr;</button>
     </form>
       </div>

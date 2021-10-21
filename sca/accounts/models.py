@@ -14,6 +14,7 @@ class User(TimeStampedModel, AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
 
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
@@ -21,6 +22,14 @@ class User(TimeStampedModel, AbstractBaseUser, PermissionsMixin):
 
     def get_full_name(self):
         return f'{self.last_name} {self.first_name}'
+
+    def enroll(self, course):
+        self.courses.add(course)
+
+    def is_enrolled(self, course_id):
+        return self.courses.filter(pk=course_id).exists()
+
+    
 
     def __str__(self):
         return self.email
