@@ -1,12 +1,12 @@
 {% load static %}
-<nav class="fixed top-0 left-0 w-full z-50 bg-white px-8 py-2 shadow-md flex items-center justify-between border-b-2 border-purple-800">
-    <section class="flex">
-       <p class="font-semibold uppercase">
-           <a href="{% url "core:index" %}">Savor<span class="text-purple-500">cakes</span> Academy</a>
+<nav class="fixed top-0 left-0 w-full z-50 bg-white px-8 md:py-2 py-4 shadow-md flex items-center justify-between border-b-2 border-purple-800">
+    <section class="md:flex">
+       <p class="font-semibold uppercase my-auto">
+           <a class="block h-full" href="{% url "core:index" %}">Savor<span class="text-purple-500">cakes</span> Academy</a>
        </p>
     </section>
 
-    <section class="flex">
+    <section class="hidden md:flex">
         {% if user.is_authenticated %}
         <a href="{% url "core:dashboard" %}" class="block py-1 mr-4 hover:underline hover:text-purple-600 font-light">Dashboard</a>
         {% endif %}
@@ -20,20 +20,42 @@
     <section class="flex items-center">
         {% if user.is_authenticated %}
 
-        {% if user.is_staff %} <a href="{% url "admin:index" %}" target="_blank" class="py-1 px-6 bg-purple-600 rounded-full shadow hover:bg-purple-500 text-white focus:ring ring-purple-400 mr-1">Admin</a>{% endif %}
+        {% if user.is_staff %} <a href="{% url "admin:index" %}" target="_blank" class="py-1 px-6 bg-purple-600 rounded-full shadow hover:bg-purple-500 text-white focus:ring ring-purple-400 mr-1 hidden md:inline">Admin</a>{% endif %}
         
         <a href="{% url "account_logout" %}" class="py-1 px-6 bg-purple-600 rounded-full shadow
-            hover:bg-purple-500 text-white focus:ring ring-purple-400 mr-1">Log out</a>
+            hover:bg-purple-500 text-white focus:ring ring-purple-400 mr-1 hidden md:inline">Log out</a>
 
 
-        <div class="ml-6 rounded-full overflow-hidden w-10 h-10 flex items-center justify-center shadow">
+        <div class="ml-6 rounded-full overflow-hidden md:w-10 md:h-10 w-6 h-6 flex items-center justify-center shadow">
             <img src="{% static 'images/no_image_.png' %}" class="h-full max-w-full">
         </div>
         {% else %}
         
-        <a href="{% url "account_login" %}" class="py-1 px-6 bg-purple-600 rounded-full shadow hover:bg-purple-800 text-white focus:ring ring-purple-400 mr-1">Log in</a>
-        <a href="{% url "account_signup" %}" class="py-1 px-6 text-purple-600 rounded-full shadow border border-purple-600 focus:ring ring-purple-400 hover:bg-purple-600 hover:text-white">Sign up</a>
-    
+        <a href="{% url "account_login" %}" class="py-1 px-6 bg-purple-600 rounded-full shadow hover:bg-purple-800 text-white focus:ring ring-purple-400 mr-1 hidden md:inline">Log in</a>
+        <a href="{% url "account_signup" %}" class="py-1 px-6 text-purple-600 rounded-full shadow border border-purple-600 focus:ring ring-purple-400 hover:bg-purple-600 hover:text-white hidden md:inline">Sign up</a>
         {% endif %}
     </section>
+
+    <button id="hamburger" class="block md:hidden hamburger"></button>
+
+    <div class="md:hidden absolute flex flex-col text-center bg-white" id="mobile-nav-menu">
+        {% if user.is_authenticated %}
+        <a href="{% url "core:dashboard" %}" class="block py-4 hover:underline hover:text-purple-600 font-light">Dashboard</a>
+        {% endif %}
+        <a href="{% url "courses:list" %}" class="block py-4  hover:underline hover:text-purple-600 font-light">Courses</a>
+        <a href="{% url "core:about" %}" class="block py-4  hover:underline hover:text-purple-600 font-light">About</a>
+        <a href="#" class="block py-4  hover:underline hover:text-purple-600 font-light">Blog</a>
+        <a href="#" class="block py-4  hover:underline hover:text-purple-600 font-light">Private classes</a>
+        <a href="{% url "core:contact" %}" class="block py-4 hover:underline hover:text-purple-600 font-light">Contact</a>
+        {% if user.is_authenticated %}
+
+        {% if user.is_staff %} <a href="{% url "admin:index" %}" target="_blank" class="block py-4  hover:underline hover:text-purple-600 font-light" >Admin</a>{% endif %}
+        
+        <a href="{% url "account_logout" %}" class="block py-4  hover:underline hover:text-purple-600 font-light">Log out</a>
+        {% else %}
+        
+        <a href="{% url "account_login" %}" class="py-2 px-6 bg-purple-600 rounded-full shadow hover:bg-purple-800 text-white focus:ring ring-purple-400 mb-2">Log in</a>
+        <a href="{% url "account_signup" %}" class="py-2 px-6 text-purple-600 rounded-full shadow border border-purple-600 focus:ring ring-purple-400 hover:bg-purple-600 hover:text-white mb-2">Sign up</a>
+        {% endif %}
+    </div>
 </nav>

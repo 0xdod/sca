@@ -16,15 +16,7 @@
         />
         <link rel="stylesheet" href="{% static "css/styles.css" %}">
         {% block styles %}{% endblock styles %}
-        <style type="text/css" media="screen">
-           body { 
-               font-family: 'Lato', sans-serif;
-               background-color: #fafafa; 
-           }
-           .footer {
-               background: linear-gradient(#041830,#080117);
-           }
-        </style>
+        {% include "_base_style.html" %}
     </head>
 
     {% block body %}
@@ -36,6 +28,24 @@
         {% endblock content %}
         {% block footer %} {% include "core/_footer.html" %}  {% endblock footer %}
         {% block scripts %}{% endblock scripts %}
+        <script type="text/javascript">
+            const hamburger = document.querySelector('#hamburger')
+            const navMenu = document.querySelector('#mobile-nav-menu')
+            
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active')
+                navMenu.classList.toggle('active')
+            })
+
+            // navMenu.children.forEach(el => {
+            //     el.addEventListener('click', ()=>{ 
+            //         hamburger.classList.remove('active')
+            //         navMenu.classList.remove('active')
+            //    })
+            // })
+
+        </script>
     </body>
     {% endblock body %}
 </html>
