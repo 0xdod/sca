@@ -27,9 +27,5 @@
 {% endblock header %}
 
 {% block main %}
-<div class="grid grid-cols-3 gap-16">
-    {% for course in course_list %}
-      {% include "courses/_card.html" %}
-    {% endfor%}
-</div>
+{% include "courses/_card_list.html" with courses=course_list %}
 {% endblock main %}

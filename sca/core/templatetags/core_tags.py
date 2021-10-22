@@ -10,3 +10,7 @@ def call_method(obj, method_name, *args):
         return method(*args)
     except AttributeError:
         pass
+
+@register.simple_tag
+def define(val=None):
+    return val

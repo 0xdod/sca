@@ -16,7 +16,7 @@
 
 {% block content %}
 <div class="mb-8">
-    <section class="flex video-section mb-8">
+    <section class="flex flex-col md:flew-row video-section mb-4 md:mb-8">
         <div class="bg-gray-900 h-full flex-1">
             <video class="block h-full w-full" preload="none" autoplay="autoplay" controls>
                 <source src="{{ lesson.url }}" type="video/mp4" media="video/mp4">
@@ -38,7 +38,7 @@
     </section>
 
 
-    <section class="mx-8 rounded shadow overflow-hidden">
+    <section class="md:mx-8 rounded shadow overflow-hidden">
         <div class="flex justify-between px-12 py-4 bg-purple-200">
             <h3 class="font-semibold">Overview</h3>
             <h3 class="font-semibold">Resources</h3>

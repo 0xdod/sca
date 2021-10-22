@@ -87,11 +87,7 @@
     >
       Featured courses
     </h2>
-    <div class="md:grid md:grid-cols-3 md:gap-16 flex flex-col">
-      {% for course in latest_courses  %}
-        {% include "courses/_card.html" %}
-      {% endfor %}
-    </div>
+    {% include "courses/_card_list.html" with courses=latest_courses %}
   </section>
 
   <section class="md:mb-20 mb-6">
