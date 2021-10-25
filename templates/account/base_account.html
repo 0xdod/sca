@@ -20,6 +20,9 @@
     <main> 
         {% block main %}{% endblock main %}
     </main>
+    {% block aside %}
+    <section class="w-full gradient hidden lg:block" id="aside"></section>
+    {% endblock aside %}
     {% endblock content %}
 
     {% block footer %}{% endblock footer %}

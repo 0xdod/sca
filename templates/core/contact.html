@@ -5,7 +5,7 @@
 {% block head_title %} Contact us {% endblock head_title %}
 
 {% block main %}
-<div class="bg-gray-200 flex w-1/2 px-12 py-6 justify-center shadow-md rounded">
+<div class="bg-gray-200 flex md:w-1/2 px-12 py-6 justify-center shadow-md rounded">
 <form method="POST" class="flex-1">
     {% csrf_token %}
     {{ form|crispy }}
