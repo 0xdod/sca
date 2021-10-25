@@ -6,7 +6,6 @@ __pycache__/
 *pyc
 tailwind/
 static/
-staticfiles/
 media/
 .idea
 buildcss.sh
