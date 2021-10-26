@@ -5,7 +5,6 @@ db.sqlite3
 __pycache__/
 *pyc
 tailwind/
-static/
 media/
 .idea
 buildcss.sh
