@@ -10,17 +10,11 @@
 
 
 {% block main %}
-<div class="flex mx-4 justify-between h-screen">
-  <section class="w-full" id="main">
-      <div class="flex flex-col h-full justify-center items-center">
-    <h2 class="text-2xl">Sign up</h2>
-    <p class="text-sm">already have an account? <a class="underline" href="{% url "account_login" %}">log in</a></p>
-    <form action="" method="POST" accept-charset="utf-8">
-      {%csrf_token%}
-      {{ form|crispy }}
-      <button class="py-2 px-6 bg-purple-600 rounded-full shadow hover:bg-purple-500 text-white focus:ring ring-purple-400 mr-1 block w-full">Create account &rarr;</button>
-    </form>
-      </div>
-  </section>
-</div>
+<h2 class="text-2xl">Sign up</h2>
+<p class="text-sm">already have an account? <a class="underline" href="{% url "account_login" %}">log in</a></p>
+<form action="" method="POST" accept-charset="utf-8">
+  {%csrf_token%}
+  {{ form|crispy }}
+  <button class="py-2 px-6 bg-purple-600 rounded-full shadow hover:bg-purple-500 text-white focus:ring ring-purple-400 mr-1 block w-full">Create account &rarr;</button>
+</form>
 {% endblock main %}

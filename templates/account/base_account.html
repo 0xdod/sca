@@ -10,22 +10,31 @@
         background-position: top;
         background-size: cover;
         background-repeat:  no-repeat;
+        width: 50%;
+        overflow: hidden;
       }
 </style>
 {% endblock styles %}
 
 {% block body %} 
-<body>
+<body class="flex justify-between h-screen">
+
+    {% block nav %} {% include "core/_nav.html" %} {% endblock nav %} 
+   
     {% block content %}
-    <main> 
-        {% block main %}{% endblock main %}
+    <main class="mx-auto flex flex-col h-full justify-center items-center" id="main">
+    {% block main %}{% endblock main %}
     </main>
+    
     {% block aside %}
-    <section class="w-full gradient hidden lg:block" id="aside"></section>
+    <section class="gradient hidden lg:block" id="aside"></section>
     {% endblock aside %}
+    
     {% endblock content %}
 
     {% block footer %}{% endblock footer %}
-    {% block scripts %}{% endblock scripts %}
+    {% block scripts %}
+    {{ block.super }}
+    {% endblock scripts %}
 </body>
 {% endblock body %}
