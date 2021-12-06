@@ -11,11 +11,20 @@ ALLOWED_HOSTS = []
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# DATABASES = {
+#         'default':  {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': 'sca',
+#             'USER': 'damilola',
+#             'PASSWORD': ''
+#             },
+#         }
+
 DATABASES = {
         'default':  {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'sca',
-            'USER': 'damilola',
-            'PASSWORD': ''
+            'USER': 'admin',
+            'PASSWORD': 'admin'
             },
         }

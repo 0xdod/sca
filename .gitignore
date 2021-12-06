@@ -11,3 +11,4 @@ media/
 buildcss.sh
 TODO
 pyrightconfig.json
+tailwindcss/

@@ -1,0 +1,55 @@
+{% load static %}
+<style>
+    .gradient {
+      background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,0.6)),
+      url('{% static "images/hero_1.jpg" %}');
+      background-position: top;
+      background-size: cover;
+      background-repeat:  no-repeat;
+    }
+
+    .header {
+      height: 85vh;
+      overflow:  hidden;
+    }
+
+    .review {
+      background-color: var(--moderate-violet);
+      color: hsl(0, 0%, 100%);
+    }
+
+    {% include "core/_animations.html" %}
+
+    .move-in-left {
+      animation: moveInLeft 1s ease-in-out;
+    }
+
+    .move-in-right {
+      animation: moveInRight 1s ease-in-out;
+    }
+
+    .move-in-bottom {
+      animation: moveInBottom 1s ease-in-out;
+    }
+
+    h1.move-in-left {
+       letter-spacing: 10px;
+    }
+
+    p.move-in-right {
+      letter-spacing:  7.5px;
+    }
+    .alt-bg-gray {
+        background-color: #4475f614;
+    }
+
+    @media (min-width: 768px) {
+      h1.move-in-left {
+       letter-spacing: 20.5px;
+      }
+
+      p.move-in-right {
+       letter-spacing:  13.5px;
+      }
+    }
+</style>

@@ -15,11 +15,11 @@
 {% endblock styles %}
 
 {% block content %}
-<div class="mb-8">
+<div class="mb-8 md:pt-5">
     <section class="flex flex-col lg:flex-row video-section mb-8">
         <div class="bg-gray-900 h-full flex-1">
             <video class="block h-full w-full" preload="none" autoplay="autoplay" controls>
-                <source src="{{ lesson.url }}" type="video/mp4" media="video/mp4">
+                <source src="{{ lesson.video.url }}" type="video/mp4" media="video/mp4">
             </video>
         </div>
         

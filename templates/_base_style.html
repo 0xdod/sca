@@ -1,53 +1,64 @@
 <style type="text/css">
-	body { 
-       font-family: 'Lato', sans-serif;
-       background-color: #fafafa; 
-   }
-   .footer {
-       background: linear-gradient(#041830,#080117);
-   }
-   .hamburger {
-        position: relative;
-   
-   }
-   .hamburger, .hamburger::before, .hamburger::after {
-        background-color: #101010;
-        width: 25px;
-        height: 3px;
-        transition: all 0.3s ease-in-out;
-   }
-   .hamburger::before, .hamburger::after {
-        content: "";
-        position: absolute;
-        display: block;
-   }
-   .hamburger::before {
-        top:  -6px;
-   }
-   .hamburger::after {
-        top:  6px;
-   }
-   .hamburger.active {
-     background-color: #fff;
-   }
-   .hamburger.active::before {
-        transform: translateY(6px) rotate(-45deg);
-   }
-   .hamburger.active::after {
-        transform: translateY(-6px) rotate(-135deg);
-   }
+  :root {
+    --color-white: hsl(0, 0%, 100%);
+    --moderate-violet: hsl(263, 55%, 52%);
+    --dark-grayish-blue: hsl(217, 19%, 35%);
+    --dark-blackish-blue: hsl(219, 29%, 14%);
+    --light-gray: hsl(0, 0%, 81%);
+    --light-grayish-blue: hsl(210, 46%, 95%);
+  }
 
-   #mobile-nav-menu.active {
+  body {
+    font-family: "Lato", sans-serif;
+    background-color: var(--color-white);
+  }
+  .footer {
+    background: var(--dark-blackish-blue);
+  }
+  .hamburger {
+    position: relative;
+  }
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    background-color: var(--moderate-violet);
+    width: 25px;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+  }
+  .hamburger::before,
+  .hamburger::after {
+    content: "";
+    position: absolute;
+    display: block;
+  }
+  .hamburger::before {
+    top: -6px;
+  }
+  .hamburger::after {
+    top: 6px;
+  }
+  .hamburger.active {
+    background-color: #fff;
+  }
+  .hamburger.active::before {
+    transform: translateY(6px) rotate(-45deg);
+  }
+  .hamburger.active::after {
+    transform: translateY(-6px) rotate(-135deg);
+  }
+
+  #mobile-nav-menu.active {
     display: flex;
     transform: translateX(0);
-   }
+  }
 
-   #mobile-nav-menu {
+  #mobile-nav-menu {
     transform: translateX(-100%);
     position: absolute;
-    top:  3.7rem;
+    top: 3.7rem;
     left: 0;
     width: 100%;
     transition: transform 0.3s ease-in;
-   }
+  }
 </style>

@@ -5,11 +5,12 @@
 {% block styles %}
 <style>
   .gradient {
-    background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,0.6)),
-    url('{% static "images/hero_1.jpg" %}');
+    background-image: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,0.6))
+    {% comment %} url('{% static "images/hero_1.jpg" %}'); {% endcomment %}
     background-position: top;
     background-size: cover;
     background-repeat:  no-repeat;
+    background-color: var(--moderate-violet);
   }
   .header { 
       height: 50vh;
@@ -25,8 +26,6 @@
 
 {% block main %}
 <p class="my-2">
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, enim
-    laborum iusto dignissimos. Sint enim excepturi dolorum rem repellendus sit
-    voluptatem est aspernatur maxime nisi. Quos provident, possimus hic quae!
+    {% lorem 1 b random %}
 </p>
 {% endblock main %}

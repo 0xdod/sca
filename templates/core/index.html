@@ -5,59 +5,11 @@
 {% block head_title %} Home {% endblock head_title %}
 
 {% block styles %}
-<style>
-  .gradient {
-    background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,0.6)),
-    url('{% static "images/hero_1.jpg" %}');
-    background-position: top;
-    background-size: cover;
-    background-repeat:  no-repeat;
-  }
-
-  .header {
-    height: 85vh;
-    overflow:  hidden;
-  }
-
-  {% include "core/_animations.html" %}
-
-  .move-in-left {
-    animation: moveInLeft 1s ease-in-out;
-  }
-
-  .move-in-right {
-    animation: moveInRight 1s ease-in-out;
-  }
-
-  .move-in-bottom {
-    animation: moveInBottom 1s ease-in-out;
-  }
-
-  h1.move-in-left {
-     letter-spacing: 10px;
-  }
-
-  p.move-in-right {
-    letter-spacing:  7.5px;
-  }
-  .alt-bg-gray {
-      background-color: #4475f614;
-  }
-
-  @media (min-width: 768px) {
-    h1.move-in-left {
-     letter-spacing: 20.5px;
-    }
-
-    p.move-in-right {
-     letter-spacing:  13.5px;
-    }
-  }
-</style>
+{% include "core/_index_style_tags.html" %}
 {% endblock styles %}
 
 {% block header %}
-<header class="header gradient text-white flex flex-col justify-center items-center mb-6 md:mb-12 w-full">
+<header class="header gradient text-white flex flex-col justify-center items-center mb-6 md:mb-0 w-full">
   <div class="uppercase text-center mb-12">
     <h1 class="move-in-left my-4 text-2xl tracking-wide md:text-5xl font-bold mx-auto">
       Savor<span class="text-purple-500">cakes</span> Academy
@@ -71,17 +23,19 @@
 
 {% block content %}
 
-<main class="mx-8">
-  <section class="md:mb-20 mb-6">
+<main class="">
+  <section class="md:p-12 p-6 md:mb-0 mb-6">
+    <h2
+    class="mb-6 font-semibold text-center text-2xl uppercase text-purple-600"
+  >
+    Welcome to savorcakes Academy
+  </h2>
     <p class="my-2">
-      Welcome to Savorcakes Academy, Lorem ipsum dolor, sit amet consectetur
-      adipisicing elit. Esse aut saepe laborum ad accusamus iusto, tempora
-      doloribus fuga, facilis eum blanditiis id maiores amet suscipit, dolorum,
-      ullam earum excepturi nostrum.
+      {% lorem 3 b random %}
     </p>
   </section>
 
-  <section class="md:mb-20 mb-6">
+  <section class="md:p-12 p-6 md:mb-0 mb-6">
     <h2
       class="mb-6 font-semibold text-center text-2xl uppercase text-purple-600"
     >
@@ -90,58 +44,49 @@
     {% include "courses/_card_list.html" with courses=latest_courses %}
   </section>
 
-  <section class="md:mb-20 mb-6">
+  <section class="md:p-12 p-6 md:mb-0 mb-6 bg-purple-200">
     <h2
       class="mb-6 font-semibold text-center text-2xl uppercase text-purple-600"
     >
       What we offer
     </h2>
-    <div class="flex flex-col md:flex-row">
+    <div class="">
       <p class="my-2">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit, cum
-        consequatur laboriosam quo atque provident ea officia doloribus ut
-        officiis commodi beatae debitis, pariatur cumque facilis ipsa eos enim
-        nesciunt.
-      </p>
-
-      <p class="my-2">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit, cum
-        consequatur laboriosam quo atque provident ea officia doloribus ut
-        officiis commodi beatae debitis, pariatur cumque facilis ipsa eos enim
-        nesciunt.
+       {% lorem 3 b random %}
       </p>
     </div>
   </section>
 
-  <section class="md:mb-20 mb-6">
-    <h2
-      class="mb-6 font-semibold text-center text-2xl uppercase text-purple-600"
-    >
+  <section class="md:p-12 p-6 md:mb-0 mb-6">
+    <h2 class="mb-6 font-semibold text-center text-2xl uppercase text-purple-600">
       What people are saying
     </h2>
+    
     <div class="flex flex-col md:flex-row">
-      <div class="bg-white md:w-1/3 shadow rounded md:mr-6 py-2 px-6 md:mb-0 mb-4 ">
+      <div class="bg-white md:w-1/3 shadow rounded md:mr-6 py-2 px-6 md:mb-0 mb-4 review">
         <blockquote> 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-</blockquote>
+          {% lorem %}
+        </blockquote>
         <div class="user">
           <img class="rounded-full h-24 w-24" src="https://picsum.photos/200" alt="lorem picsum" />
           <p class="username">jane doe</p>
         </div>
       </div>
-      <div class="bg-white md:w-1/3 shadow rounded md:mr-6 py-2 px-6 md:mb-0 mb-4 ">
+
+      <div class="bg-white md:w-1/3 shadow rounded md:mr-6 py-2 px-6 md:mb-0 mb-4 review">
         <blockquote> 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-</blockquote>
+          {% lorem %}
+        </blockquote>
         <div class="user">
           <img class="rounded-full h-24 w-24" src="https://picsum.photos/200" alt="lorem picsum" />
           <p class="username">jane doe</p>
         </div>
       </div>
-      <div class="bg-white md:w-1/3 shadow rounded py-2 px-6 md:mb-0 mb-4">
+
+      <div class="bg-white md:w-1/3 shadow rounded py-2 px-6 md:mb-0 mb-4 review">
         <blockquote> 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-</blockquote>
+          {% lorem %}
+        </blockquote>
         <div class="user">
           <img class="rounded-full h-24 w-24" src="https://picsum.photos/200" alt="lorem picsum" />
           <p class="username">jane doe</p>

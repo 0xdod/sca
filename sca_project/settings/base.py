@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "crispy_forms",
     "crispy_tailwind",
+    'easy_thumbnails',
 
     # Local apps
     "sca.accounts",
