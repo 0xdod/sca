@@ -9,8 +9,7 @@
         .header {
             height: 65vh;
             overflow:  hidden;
-            background-image: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,0.6)),
-                url('{% static "images/img_1.jpg" %}');
+            background-image: linear-gradient(to right, hsla(263, 55%, 52%, 0.6), hsla(263, 55%, 52%, 0.5));
             background-position: center;
             background-size: cover;
             background-repeat:  no-repeat;
@@ -20,13 +19,20 @@
 {% endblock styles %}
 
 {% block header %}
-<header class="header bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
-    <h1 class="my-2 text-center text-5xl font-bold text-white uppercase tracking-widest">
+<header class="header flex flex-col items-center justify-center">
+    <h1 class="my-4 text-center text-5xl font-bold text-white uppercase tracking-widest">
         Online courses
     </h1>
+    <p class="text-white px-12 text-center">{% lorem 2 random %}</p>
 </header>
 {% endblock header %}
 
 {% block main %}
+<form class="my-6">
+    <div class="flex justify-end">
+        <input class="mr-2 bg-white shadow-md rounded-full text-purple-900 px-4" type="text" name="search" id="search" placeholder="Search for course..." >
+        <button class="text-white py-2 px-6 bg-purple-600 shadow rounded-full">Search</button>
+    </div>
+</form>
 {% include "courses/_card_list.html" with courses=course_list %}
 {% endblock main %}

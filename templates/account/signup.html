@@ -1,4 +1,4 @@
-{% extends "account/base_account.html" %}
+{% extends "account/base.html" %}
 {% load static %}
 {% load tailwind_filters %}
 
@@ -8,7 +8,7 @@
 
 {% block head_title %} Create an account {% endblock head_title %} 
 
-
+{% comment %} 
 {% block main %}
 <h2 class="text-2xl">Sign up</h2>
 <p class="text-sm">already have an account? <a class="underline" href="{% url "account_login" %}">log in</a></p>
@@ -17,4 +17,36 @@
   {{ form|crispy }}
   <button class="py-2 px-6 bg-purple-600 rounded-full shadow hover:bg-purple-500 text-white focus:ring ring-purple-400 mr-1 block w-full">Create account &rarr;</button>
 </form>
+{% endblock main %} {% endcomment %}
+
+
+{% block main %}
+<p class="text-center text-3xl">Join Us.</p>
+<form class="flex flex-col pt-3 md:pt-8" method="POST">
+    {% csrf_token %}
+    <small class="text-red-500 italic">{{ form.non_field_errors }}</small>
+
+    <div class="flex flex-col pt-4">
+        <label for="email" class="text-lg">Email</label>
+        <small class="text-red-500 italic">{{ form.email.errors }}</small>
+        <input required type="email" name="email" id="email" placeholder="your@email.com" class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline {% if form.email.errors %}border-red-600{% endif %}" />
+    </div>
+
+    <div class="flex flex-col pt-4">
+        <label for="password" class="text-lg">Password</label>
+        <small class="text-red-500 italic">{{ form.password1.errors }}</small>
+        <input required type="password" name="password1" id="password" placeholder="Password" class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline {% if form.password1.errors %}border-red-600{% endif %}" />
+    </div>
+
+    <div class="flex flex-col pt-4">
+        <label for="password2" class="text-lg">Confirm Password</label>
+        <small class="text-red-500 italic">{{ form.password2.errors}}</small>
+        <input required type="password" name="password2" id="password2" placeholder="Password" class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline {% if form.password2.errors %}border-red-600{% endif %}" />
+    </div>
+
+    <button class="py-2 px-3 bg-purple-600 rounded-full shadow hover:bg-purple-500 text-white focus:ring text-lg ring-purple-400 mt-8">Sign up &rarr;</button>
+</form>
+<div class="text-center py-6">
+    <p>Already have an account? <a href="{% url "account_login" %}" class="underline font-semibold">Log in here.</a></p>
+</div>
 {% endblock main %}

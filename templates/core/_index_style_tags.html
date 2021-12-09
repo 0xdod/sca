@@ -1,8 +1,9 @@
 {% load static %}
 <style>
     .gradient {
-      background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,0.6)),
+      background-image: linear-gradient(to right, hsla(263, 55%, 52%, .8), rgba(0,0,0,.6)),
       url('{% static "images/hero_1.jpg" %}');
+
       background-position: top;
       background-size: cover;
       background-repeat:  no-repeat;
@@ -11,11 +12,6 @@
     .header {
       height: 85vh;
       overflow:  hidden;
-    }
-
-    .review {
-      background-color: var(--moderate-violet);
-      color: hsl(0, 0%, 100%);
     }
 
     {% include "core/_animations.html" %}
@@ -41,6 +37,10 @@
     }
     .alt-bg-gray {
         background-color: #4475f614;
+    }
+
+    .offer-wrapper {
+      background: var(--moderate-violet);
     }
 
     @media (min-width: 768px) {
