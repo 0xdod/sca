@@ -4,22 +4,14 @@
 
 {% block styles %}
 <style>
-  .gradient {
-    background-image: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,0.6))
-    {% comment %} url('{% static "images/hero_1.jpg" %}'); {% endcomment %}
-    background-position: top;
-    background-size: cover;
-    background-repeat:  no-repeat;
-    background-color: var(--moderate-violet);
-  }
   .header { 
-      height: 50vh;
+      height: 70vh;
   }
 </style>
 {% endblock styles %}
 
 {% block header %}
-<header class="header gradient text-white flex flex-col justify-center items-center mb-6 md:mb-8 w-full">
+<header class="header bg-purple-900 text-white flex flex-col justify-center items-center mb-6 md:mb-8 w-full">
 <h1 class="text-5xl font-bold uppercase text-center">About us</h1>
 </header>
 {% endblock header%}

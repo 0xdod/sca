@@ -15,7 +15,7 @@
 {% endblock styles %}
 
 {% block content %}
-<div class="mb-8 md:pt-5">
+<div class="mb-8 md:pt-4">
     <section class="flex flex-col lg:flex-row video-section mb-8">
         <div class="bg-gray-900 h-full flex-1">
             <video class="block h-full w-full" preload="none" autoplay="autoplay" controls>
@@ -27,7 +27,7 @@
             <h3 class="font-semibold bg-gray-200 py-2 px-4"> Lessons </h3>
             <ul class="">
              {% for lsn in lesson.course.lessons.all %}
-                <li class="px-4 text-lg py-4 font-semibold border-b-2 border-purple-600">
+                <li class="px-4 text-lg py-4 font-semibold shadow">
                     <input type="checkbox"> 
                     <span class="px-4"> {{ lsn.title }}</span>
                 </li>
@@ -36,13 +36,10 @@
         </div>
     </section>
 
-    <section class="md:mx-8 rounded shadow overflow-hidden">
-        <div class="flex justify-between px-12 py-4 bg-purple-200">
-            <h3 class="font-semibold">Overview</h3>
-            <h3 class="font-semibold">Resources</h3>
-            <h3 class="font-semibold">Notes</h3>
-        </div>
-        <div class="px-8 py-4 bg-purple-50 text-gray-900">
+    <section class="px-8 rounded">
+        <h2 class="font-bold text-xl mb-4">Lesson {{ lesson.order }}</h2>
+        <div class="text-gray-900">
+            <h3 class="font-semibold mb-2">Overview</h3>
             <p>{{ lesson.overview|linebreaks }}</p>
         </div>
         

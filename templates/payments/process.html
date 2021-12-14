@@ -10,7 +10,24 @@
 {% endif %}
 
 <p class="mb-4">Price <strong>{{ course.price }}</strong></p>
-
+{% if not course.price %}
+<form>
+  <a href="{% url "payments:success" %}" 
+    class="
+        px-8
+        py-2
+        rounded-full
+        shadow-md
+        focus:ring-2
+        focus:ring-purple-400
+        bg-purple-600
+        hover:bg-purple-500
+        text-white
+        cursor-pointer
+        mx-auto" 
+        type="button" >Enroll now
+  </a>
+{% else %}
 <form>
   <button class="
         px-8
@@ -24,8 +41,9 @@
         text-white
         cursor-pointer
         mx-auto" 
-        type="button" onClick="makePayment()">Pay Now</button>
+        type="button" onClick="makePayment()">Pay  Now </button>
 </form>
+{% endif %}
 {% endblock main %}
 
 

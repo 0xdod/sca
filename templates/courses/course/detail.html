@@ -9,12 +9,8 @@
     <style>
   
         .header {
-            height: 65vh;
-            background-image: linear-gradient(to right, hsla(263, 55%, 52%, 0.6), hsla(263, 55%, 52%, 0.5));
-            background-position: center;
-            background-size: cover;
-            background-repeat:  no-repeat;
-            background-color: var(--moderate-violet);
+            height: 70vh;
+           
         }
     </style>
 {% endblock styles %}
@@ -22,7 +18,7 @@
 
 
 {% block header %}
-<header class="px-12 py-6 header flex flex-col text-white relative">
+<header class="px-12 py-6 header bg-purple-900 flex flex-col text-white relative">
     <h1 class="my-4 font-bold text-white uppercase">
         {{ course.title }}
     </h1>
@@ -36,14 +32,14 @@
         <p class=""> {{ course.overview|linebreaks }} </p>
     </div>
 
-    <div class="hidden lg:block overflow-hidden z-40 md:w-96 absolute lg:right-12 lg:top-20 shadow-md rounded-md bg-white text-black">
+    <div class="hidden lg:block overflow-hidden z-40 md:w-96 absolute lg:right-12 lg:top-20 shadow-md rounded-md bg-white text-black pb-4">
        {% comment %} replace with preview video {% endcomment %}
         {% thumbnail course.thumbnail 400x280 crop as thumb %}
         <div class="max-h-56 overflow-hidden">
             <img class="block min-w-full" src="{{thumb.url}}" alt="course image" width="{{thumb.width}}"  height="{{ thumb.height }}">
         </div>
        
-        <div class="px-8 p-4">
+        <div class="px-8 py-4">
             <p class="mb-4 text-gray-800">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod cillum dolore eu fugiat nulla pariatur</p>
             <p class="text-right font-semibold text-lg px-4 my-2"> ${{ course.price }}</p>
             
@@ -54,7 +50,7 @@
             {% else %}
             <form  method="POST" action="{% url 'courses:buy_course' course.id %}">
                 {% csrf_token %}
-                <button class="px-8 py-2 rounded-full shadow-md focus:ring-2 focus:ring-green-400 bg-green-600 hover:bg-green-500 text-white text-center font-semibold cursor-pointer mx-auto block w-full"
+                <button class="px-8 py-2 rounded-full shadow-md focus:ring-2 focus:ring-gray-400 bg-black hover:bg-gray-800 text-white text-center font-semibold cursor-pointer mx-auto block w-full"
                 > Buy </button>
             </form>
             {% endif %}
@@ -113,7 +109,7 @@ Related courses
     <p class="mb-2 text-right font-semibold">${{ course.price }}</p>
     <form method="POST" action="{% url 'courses:buy_course' course.id %}">
         {% csrf_token %}
-        <button class="px-8 py-2 rounded-full shadow-md focus:ring-2 focus:ring-green-400 bg-green-600 hover:bg-green-500 text-white text-center font-semibold cursor-pointer mx-auto block w-full"
+        <button class="px-8 py-2 rounded-full shadow-md focus:ring-2 focus:ring-gray-400 bg-black hover:bg-gray-800 text-white text-center font-semibold cursor-pointer mx-auto block w-full"
         > Buy </button>
     </form>
     

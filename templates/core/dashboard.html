@@ -6,16 +6,12 @@
 
 {% block main %}
 
-<div class="flex flex-col md:flex-row items-center mb-4 border-b-2 pb-4 border-purple-900">
-    <div class="rounded-full overflow-hidden md:w-16 md:h-16 w-8 h-8 flex items-center justify-center shadow-md md:mr-4 mb-4 md:mb-0">
-        <img src="{% static 'images/no_image.png' %}" class="h-full max-w-full">
-    </div>
-    <div class="flex item-center flex-col md:mb-0 mb-4">
-        <h1 class="font-semibold text-lg md:text-2xl md:mb-0 mb-4">{{ user.get_full_name }}</h1>
-        <strong class="font-bold">{{ user.email }}</strong>
+<div class="flex flex-col md:flex-row items-center mb-4 pb-4">
+    <div class="flex md:ml-auto md:mr-4 item-center text-center flex-col md:mb-0 mb-4">
+        <strong class="font-semibold">{{ user.email }}</strong>
     </div>
 
-    <div class="md:ml-auto"><a href="{% url 'profile' %}" class="py-2 px-6 bg-purple-600 rounded-full shadow hover:bg-purple-500 text-white focus:ring ring-purple-400">Edit profile</a></div>
+    <div class=""><a href="{% url 'profile' %}" class="py-2 px-6 bg-purple-600 rounded-full shadow hover:bg-purple-500 text-white focus:ring ring-purple-400">Edit profile</a></div>
 </div>
 
 
