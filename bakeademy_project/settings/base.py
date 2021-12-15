@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
 
     # Local apps
-    'bakeademy.users'
+    'bakeademy.core',
+    'bakeademy.users',
 ]
 
 SITE_ID = 1

@@ -1,0 +1,18 @@
+{% load form_tags %}
+
+<form class="flex flex-col items-center" method="post">
+	{% csrf_token %}
+	{{ form.non_field_errors }}
+	{% for field in form %}
+	<div class="text-gray-900 flex flex-col w-96">
+		{{ field.errors }}
+		{{ field.label_tag }}
+		{% dict 'class' 'bg-gray-100 p-2 rounded shadow mb-4 border-b-2 border-transparent focus:border-gray-900 outline-none' as d %}
+		{{ field|addattr:d }}
+		{% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+	</div>
+	{% endfor %}
+	{% include '_primary_btn.html' with value=btn_value %}
+</form>

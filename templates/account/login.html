@@ -1,9 +1,8 @@
 {% extends "account/base.html" %}
+{% load form_tags %}
 
 {% block content %}
-<form action="">
-	{{ form.as_p }}
-	{% csrf_token %}
-	<button>Log in</button>
-</form>
+<h2 class="font-semibold text-gray-900 text-center">Welcome</h2>
+{% include 'account/_form.html' with btn_value="Log in" %}
+<p class="my-4 text-center">Don't have an account? <a class="underline" href="{% url 'account_signup' %}">sign up now</a>.</p>
 {% endblock content %}

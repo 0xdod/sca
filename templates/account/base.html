@@ -2,7 +2,10 @@
 
 
 {% block body %}
-<body>
-	{% block content %} {% endblock content %}
+<body class="min-h-screen bg-gray-100 flex flex-col justify-center items-center">
+	<main class="bg-white shadow shadow-md rounded p-12">
+		{% block content %} {% endblock content %}
+	</main>
+	
 </body>
 {% endblock body %}
