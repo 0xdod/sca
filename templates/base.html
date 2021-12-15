@@ -7,8 +7,11 @@
 	<title>{% block title %} Home {% endblock title %} &ndash; Bakeademy</title>
 	<link rel="stylesheet" href="{% static "css/styles.css" %}">
 </head>
+
+{% block body %}
 <body>
 	{% block content %}
 	{% endblock content %}
 </body>
+{% endblock body %}
 </html>

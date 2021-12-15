@@ -34,12 +34,12 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
 
     # Local apps
-    # 'bakeademy.users'
+    'bakeademy.users'
 ]
 
 SITE_ID = 1
 
-# AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
