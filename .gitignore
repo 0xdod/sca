@@ -4,10 +4,9 @@
 db.sqlite3
 __pycache__/
 *pyc
-static/
+staticfiles/
 media/
 .idea
 pyrightconfig.json
-tailwindcss/
-archive
+archive/
 node_modules/
