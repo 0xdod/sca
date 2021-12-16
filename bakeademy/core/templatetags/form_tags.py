@@ -16,3 +16,8 @@ def Dict(*args):
             d[args[i]] = args[i+1]
 
     return d
+
+
+@register.filter(name='addclass')
+def addclass(value, klass):
+    return value.as_widget(attrs={'class': klass})

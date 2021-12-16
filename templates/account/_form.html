@@ -1,18 +1,35 @@
 {% load form_tags %}
 
-<form class="flex flex-col items-center" method="post">
+<form class="md:w-96" method="post">
 	{% csrf_token %}
-	{{ form.non_field_errors }}
+	
+	{% if form.non_field_errors %}
+    <ol class="rounded bg-gray-100 text-sm italic text-gray-800 border-2 mb-6 p-6">
+    {% for error in form.non_field_errors %}
+        <li>{{ error|escape }}</li>
+    {% endfor %}
+    </ol>
+	{% endif %}
+
 	{% for field in form %}
-	<div class="text-gray-900 flex flex-col w-96">
-		{{ field.errors }}
-		{{ field.label_tag }}
-		{% dict 'class' 'bg-gray-100 p-2 rounded shadow mb-4 border-b-2 border-transparent focus:border-gray-900 outline-none' as d %}
-		{{ field|addattr:d }}
+	<div class="text-gray-900  {% if field.widget_type == 'checkbox' %} {% else %}flex flex-col{% endif %} mb-2">
+
+	   {% if field.errors %}
+	   <ol class="mb-1">
+	    {% for error in field.errors %}
+	        <li class="italic text-gray-500 text-sm">{{ error|escape }}</li>
+	    {% endfor %}
+	    </ol>
+	    {% endif %}
+
+	    <label class="font-semibold text-gray-900 mb-1" for="{{ field.id_for_label }}">{{ field.label }}</label>
+		{{ field|addclass:'bg-white p-2 rounded border shadow-md focus:ring ring-gray-800 mb-4 outline-none' }}
+
 		{% if field.help_text %}
         <p class="help">{{ field.help_text|safe }}</p>
         {% endif %}
+
 	</div>
 	{% endfor %}
-	{% include '_primary_btn.html' with value=btn_value %}
+	{% include '_primary_btn.html' with value=btn_value full=True %}
 </form>

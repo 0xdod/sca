@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 
-
 {% block body %}
 <body class="min-h-screen bg-gray-100 flex flex-col justify-center items-center">
-	<main class="bg-white shadow shadow-md rounded p-12">
+	<main class="max-w-1/2 bg-white md:py-16 md:px-8 p-6 bg-white shadow-md rounded mx-auto">
 		{% block content %} {% endblock content %}
 	</main>
-	
 </body>
 {% endblock body %}

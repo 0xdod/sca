@@ -42,7 +42,7 @@ class User(TimestampedModel, AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=50)
     email = models.EmailField('email address', unique=True)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
