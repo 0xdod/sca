@@ -15,16 +15,16 @@
 		background-repeat: no-repeat;
 		background-blend-mode: multiply;
 	}
-	.card-item {
+	.card-4 {
 		flex-basis: 24%;
 		margin-bottom: 8px;
 	}
-	.card-item:not(:nth-child(4n + 0)) { margin-right: 8px; }
-	.card-item-3 {
+	.card-4:not(:nth-child(4n + 0)) { margin-right: 8px; }
+	.card-3 {
 		flex-basis: 32%;
 		margin-bottom: 16px;
 	}
-	.card-item-3:not(:nth-child(3n + 0)) { margin-right: 16px; }
+	.card-3:not(:nth-child(3n + 0)) { margin-right: 16px; }
 </style>
 {% endblock styles %}
 
@@ -82,15 +82,7 @@
 		>
 			Featured courses
 		</h3>
-		<div class="flex flex-wrap -mx-2 mx-auto">
-			<div
-				class="card-item px-2 h-48 rounded bg-white shadow hover:shadow-xl"
-			></div>
-			<div class="card-item px-2 h-48 rounded bg-white shadow"></div>
-			<div class="card-item px-2 h-48 rounded bg-white shadow"></div>
-			<div class="card-item px-2 h-48 rounded bg-white shadow"></div>
-			<div class="card-item px-2 h-48 rounded bg-white shadow"></div>
-		</div>
+		{% include "courses/_course_list.html" %}
 	</section>
 
 	<section class="p-12 bg-gray-300 text-gray-700">
@@ -99,12 +91,12 @@
 		</h3>
 		<div class="flex flex-wrap -mx-2 mx-auto w-full">
 			<div
-				class="card-item-3 px-8 h-48 rounded bg-white shadow hover:shadow-xl"
+				class="card-3 px-8 h-48 rounded bg-white shadow hover:shadow-xl"
 			></div>
-			<div class="card-item-3 px-8 h-48 rounded bg-white shadow"></div>
-			<div class="card-item-3 px-8 h-48 rounded bg-white shadow"></div>
-			<div class="card-item-3 px-8 h-48 rounded bg-white shadow"></div>
-			<div class="card-item-3 px-8 h-48 rounded bg-white shadow"></div>
+			<div class="card-3 px-8 h-48 rounded bg-white shadow"></div>
+			<div class="card-3 px-8 h-48 rounded bg-white shadow"></div>
+			<div class="card-3 px-8 h-48 rounded bg-white shadow"></div>
+			<div class="card-3 px-8 h-48 rounded bg-white shadow"></div>
 		</div>
 	</section>
 

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Online courses {% endblock title %}
+
+{% block content %}
+	<div class="px-24">
+		{% include "courses/_course_list.html" with courses=course_list %}
+	</div>
+{% endblock content %}

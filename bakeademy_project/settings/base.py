@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     # Local apps
     'bakeademy.core',
     'bakeademy.users',
+    'bakeademy.courses',
 ]
 
 SITE_ID = 1
