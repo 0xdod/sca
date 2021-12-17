@@ -1,5 +1,138 @@
 {% extends "base.html" %}
+{% load static %}
+{% block styles %}
+<style type="text/css">
+	.hero {
+		height: 80vh;
+		background-image: linear-gradient(
+				to right,
+				hsla(0, 0%, 0%, 0.8),
+				hsla(0, 0%, 0%, 0.9)
+			),
+			url('{% static "images/hero-lq.jpg" %}');
+		background-size: cover;
+		background-position: top;
+		background-repeat: no-repeat;
+		background-blend-mode: multiply;
+	}
+	.card-item {
+		flex-basis: 24%;
+		margin-bottom: 8px;
+	}
+	.card-item:not(:nth-child(4n + 0)) { margin-right: 8px; }
+	.card-item-3 {
+		flex-basis: 32%;
+		margin-bottom: 16px;
+	}
+	.card-item-3:not(:nth-child(3n + 0)) { margin-right: 16px; }
+</style>
+{% endblock styles %}
 
 {%block content%}
-<h1>Hello world</h1>
+<main>
+	<section class="hero flex flex-col justify-center items-center">
+		<h1 class="uppercase text-gray-100 mb-6 text-center leading-10">
+			<span class="block text-5xl mb-4 font-bold">Bakeademy</span>
+			<span class="block text-xl tracking-widest">Your online baking academy.</span>
+		</h1>
+		{% include "_primary_btn.html" with value="Explore courses" as_link=True href="/" %}
+	</section>
+
+	<section class="p-12 text-gray-800 space-y-6">
+		<div class="flex">
+			<div class="max-w-2xl">
+				<h2
+					class="text-gray-800 mb-6 uppercase font-bold text-4xl leading-4"
+				>
+					Welcome to bakedemy
+				</h2>
+				<p class="">
+					Bakeademy is an online learning platform for baking
+					enthusiasts and home bakers, join today and take your baking
+					skills to the next level.
+				</p>
+			</div>
+
+			<div class="hidden md:block h-72 overflow-hidden mx-auto">
+				<img class="block w-full max-h-full" src="{% static "images/girl-with-rolling-pin.png" %}" alt="">
+			</div>
+		</div>
+
+		<div class="flex justify-center space-x-24">
+			<div class="hidden md:block h-72 overflow-hidden">
+				<img class="block w-full max-h-full" src="{% static	"images/chocolate-cake.png" %}" alt="">
+			</div>
+			<div class="max-w-2xl">
+				<h2
+					class="text-gray-800 mb-6 uppercase font-bold text-2xl leading-4"
+				>
+					Learn home made recepies
+				</h2>
+				<p class="">
+					Learn to bake like a pro from our catalog of world-class
+					recipies.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="p-12 bg-gray-200 text-gray-800">
+		<h3
+			class="text-gray-500 mb-6 uppercase font-semibold text-3xl leading-4"
+		>
+			Featured courses
+		</h3>
+		<div class="flex flex-wrap -mx-2 mx-auto">
+			<div
+				class="card-item px-2 h-48 rounded bg-white shadow hover:shadow-xl"
+			></div>
+			<div class="card-item px-2 h-48 rounded bg-white shadow"></div>
+			<div class="card-item px-2 h-48 rounded bg-white shadow"></div>
+			<div class="card-item px-2 h-48 rounded bg-white shadow"></div>
+			<div class="card-item px-2 h-48 rounded bg-white shadow"></div>
+		</div>
+	</section>
+
+	<section class="p-12 bg-gray-300 text-gray-700">
+		<h3 class="mb-6 uppercase font-semibold text-3xl leading-4">
+			What past students are saying
+		</h3>
+		<div class="flex flex-wrap -mx-2 mx-auto w-full">
+			<div
+				class="card-item-3 px-8 h-48 rounded bg-white shadow hover:shadow-xl"
+			></div>
+			<div class="card-item-3 px-8 h-48 rounded bg-white shadow"></div>
+			<div class="card-item-3 px-8 h-48 rounded bg-white shadow"></div>
+			<div class="card-item-3 px-8 h-48 rounded bg-white shadow"></div>
+			<div class="card-item-3 px-8 h-48 rounded bg-white shadow"></div>
+		</div>
+	</section>
+
+	<section class="p-12 bg-gray-800 text-gray-100">
+		<h3 class="mb-6 uppercase font-semibold text-3xl leading-4">
+			Join our newsletter
+		</h3>
+		<p class="">
+			Join our mailing list to receive latest information about our
+			upcoming classes and promotions
+		</p>
+		<form action="" method="post" class="flex flex-col space-y-6 max-w-md">
+			{% csrf_token %}
+			<input
+				class="rounded-lg bg-gray-200 shadow border py-2 px-4 outline-none focus:ring ring-gray-600"
+				type="text"
+				name="name"
+				placeholder="Full name"
+			/>
+			<input
+				class="rounded-lg bg-gray-200 shadow border py-2 px-4 outline-none focus:ring ring-gray-600"
+				type="email"
+				name="email"
+				placeholder="Email address"
+			/>
+			{% include "_primary_btn.html" with value="Join" %}
+		</form>
+	</section>
+</main>
+
 {% endblock content %}
