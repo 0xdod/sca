@@ -3,5 +3,5 @@
 {% block content %}
 <h2 class="font-semibold text-gray-900 text-center mb-6">Create an account</h2>
 {% include 'account/_form.html' with btn_value="Sign up" %}
-<p class="my-4 text-gray-700">Already have an account? <a class="font-semibold hover:underline" href="{% url 'account_login' %}">login here</a>.</p>
+<p class="my-4 text-gray-900">Already have an account? <a class="font-semibold hover:underline" href="{% url 'account_login' %}">login here</a>.</p>
 {% endblock content %}

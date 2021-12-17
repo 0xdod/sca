@@ -4,7 +4,7 @@
 	{% csrf_token %}
 	
 	{% if form.non_field_errors %}
-    <ol class="rounded bg-gray-100 text-sm italic text-gray-800 border-2 mb-6 p-6">
+    <ol class="rounded bg-gray-100 text-sm italic text-gray-800 border-2 mb-6 p-4">
     {% for error in form.non_field_errors %}
         <li>{{ error|escape }}</li>
     {% endfor %}

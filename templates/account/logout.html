@@ -2,7 +2,8 @@
 
 
 {% block content %}
-<form action="">
-	<button>Log out</button>
+<form method="post">
+	{% csrf_token %}
+	{% include '_primary_btn.html' with value="Log out" %}
 </form>
 {% endblock content %}
