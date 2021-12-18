@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{{ lesson.title }}
+{% endblock title %}
+
+{% block styles %}
+    <style>
+        .video-section { height: 75vh; }
+    </style>
+{% endblock styles %}
+
+{% block content %}
+<main>
+	<div class="mb-6 flex space-x-4 video-section">
+		<div class="flex-1 h-full">
+			<video controls class="max-h-full w-full">
+				<source src="{{ lesson.video.url }}" type="video/mp4">
+			</video>
+		</div>
+		<div class="overflow-y-auto" style="flex-basis: 27%;">
+			<h6 class="font-semibold text-lg uppercase text-gray-100 bg-gray-900 px-4 py-8">
+				Course outline
+			</h6>
+			<ul>
+			{% for l in course.lessons.all  %}
+				<li class="p-4 divide-y-2 hover:bg-gray-300">
+					<a class="block" href="{{l.get_absolute_url}}">
+						<input disabled type="checkbox" id="id_lesson_{{ l.id }}">
+						{{ l.title }}
+					</a>
+				</li>	
+			{% endfor %}	
+			</ul>
+		</div>
+	</div>
+
+	<div class="p-12">
+		<h1 class="text-5xl font-bold mb-6 leading-6"> {{ lesson.title }} </h1>
+		<p class="">
+			{{ lesson.description }}
+		</p>
+	</div>
+</main>
+{% endblock content %}

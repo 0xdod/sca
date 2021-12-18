@@ -26,6 +26,7 @@ class Course(TimestampedModel):
         settings.AUTH_USER_MODEL, related_name="courses", )
     status = models.CharField(max_length=10, choices=STATUS_CHOICES,
                               default='draft')
+    # preview_video = models.URLField()
 
     class Meta:
         index_together = [
@@ -49,7 +50,7 @@ class Course(TimestampedModel):
         return super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('courses:detail', args=[self.pk, self.slug])
+        return reverse('courses:course_detail', args=[self.pk, self.slug])
 
 
 class Lesson(TimestampedModel):
@@ -58,7 +59,8 @@ class Lesson(TimestampedModel):
     description = models.TextField()
     course = models.ForeignKey(
         Course, on_delete=models.CASCADE, related_name='lessons')
-    video_url = models.URLField()
+    video_url = models.URLField(blank=True)
+    video = models.FileField(upload_to='videos/', null=True, blank=True)
     position = models.PositiveIntegerField()
 
     def __str__(self):
@@ -67,6 +69,9 @@ class Lesson(TimestampedModel):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+
+        if self.video_url != self.video.url:
+            self.video_url = self.video.url
 
         return super().save(*args, **kwargs)
 

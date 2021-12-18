@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "postcss assets/tailwind.css -o static/css/styles.css",
-    "build:prod": "NODE_ENV=production npm run build"
+    "build:prod": "NODE_ENV=production npm run build",
+    "t:build": "tailwindcss -i assets/tailwind.css -o static/css/styles.css"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +15,9 @@
   "dependencies": {
     "autoprefixer": "^10.1.0",
     "postcss": "^8.2.2",
-    "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.0.2"
+    "postcss-cli": "^8.3.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.0.7"
   }
 }

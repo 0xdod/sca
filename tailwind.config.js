@@ -1,12 +1,19 @@
+// module.exports = {
+//   purge: [
+//     './templates/**/*.html',
+//   ],
+//   darkMode: false, // or 'media' or 'class'
+//   theme: {
+//     extend: {},
+//   },
+//   variants: {
+//     extend: {},
+//   },
+//   plugins: [],
+// }
 module.exports = {
-  purge: [
-    './templates/**/*.html',
-  ],
-  darkMode: false, // or 'media' or 'class'
+  content: ["./templates/**/*.html", "./bakeademy/**/*.py"],
   theme: {
-    extend: {},
-  },
-  variants: {
     extend: {},
   },
   plugins: [],
