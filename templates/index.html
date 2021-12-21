@@ -35,59 +35,44 @@
 			<span class="block text-5xl mb-4 font-bold">Bakeademy</span>
 			<span class="block text-xl tracking-widest">Your online baking academy.</span>
 		</h1>
-		{% include "_primary_btn.html" with value="Explore courses" as_link=True href="/" %}
+		<a href="/" class="py-3 px-9 bg-purple-900 text-gray-100 font-medium rounded-lg hover:bg-purple-800 shadow">Explore courses</a>
 	</section>
 
-	<section class="p-12 text-gray-800 space-y-6">
-		<div class="flex">
-			<div class="max-w-2xl">
-				<h2
-					class="text-gray-800 mb-6 uppercase font-bold text-4xl leading-4"
-				>
-					Welcome to bakedemy
-				</h2>
-				<p class="">
-					Bakeademy is an online learning platform for baking
-					enthusiasts and home bakers, join today and take your baking
-					skills to the next level.
-				</p>
-			</div>
-
-			<div class="hidden md:block h-72 overflow-hidden mx-auto">
-				<img class="block w-full max-h-full" src="{% static "images/girl-with-rolling-pin.png" %}" alt="">
-			</div>
-		</div>
-
-		<div class="flex justify-center space-x-24">
-			<div class="hidden md:block h-72 overflow-hidden">
-				<img class="block w-full max-h-full" src="{% static	"images/chocolate-cake.png" %}" alt="">
-			</div>
-			<div class="max-w-2xl">
-				<h2
-					class="text-gray-800 mb-6 uppercase font-bold text-2xl leading-4"
-				>
-					Learn home made recepies
-				</h2>
-				<p class="">
-					Learn to bake like a pro from our catalog of world-class
-					recipies.
-				</p>
-			</div>
+	<section class="p-12">
+		<div class="max-w-2xl space-y-6">
+			<h2 class="text-purple-900 mb-6 uppercase text-4xl leading-4">
+				Welcome to bakedemy
+			</h2>
+			<p class="text-gray-900">
+				Bakeademy is an online learning platform for baking
+				enthusiasts and home bakers, join today and take your baking
+				skills to the next level. We provide the best online course to take you from amateur to professional baker.
+			</p>
+			<p class="">
+				We have a membership program where Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Itaque sapiente debitis sequi, nostrum, et consequatur numquam corrupti qui veritatis, ullam nam voluptates molestiae repudiandae illum magni mollitia nesciunt sed animi!
+			</p>
 		</div>
 	</section>
 
-	<section class="p-12 bg-gray-200 text-gray-800">
-		<h3
-			class="text-gray-500 mb-6 uppercase font-semibold text-3xl leading-4"
-		>
-			Featured courses
+	<section class="p-12 bg-white">
+		<h3 class="text-purple-900 mb-16 uppercase text-center text-3xl leading-4">
+			Explore Featured courses
 		</h3>
 		{% include "courses/_course_list.html" %}
 	</section>
 
-	<section class="p-12 bg-gray-300 text-gray-700">
-		<h3 class="mb-6 uppercase font-semibold text-3xl leading-4">
-			What past students are saying
+	<section class="px-48 py-12 bg-gradient-to-b from-purple-700 to-purple-900 text-gray-100">
+		<h3 class="mb-16 uppercase text-center text-3xl leading-4">
+			Join our membership program
+		</h3>
+		<div>
+			<p>We have membership</p>
+		</div>
+	</section>
+
+	<section class="p-12 text-gray-900">
+		<h3 class="text-center mb-16 uppercase text-purple-900 text-3xl leading-4">
+			Testimonials from members
 		</h3>
 		<div class="flex flex-wrap -mx-2 mx-auto w-full">
 			<div
@@ -100,15 +85,15 @@
 		</div>
 	</section>
 
-	<section class="p-12 bg-gray-800 text-gray-100">
-		<h3 class="mb-6 uppercase font-semibold text-3xl leading-4">
+	<section class="bg-gradient-to-br from-gray-200 to-gray-400 p-12 text-gray-900 rounded-lg mx-24 my-12 flex flex-col items-center justify-center">
+		<h3 class="mb-6 uppercase text-purple-900 text-3xl leading-4">
 			Join our newsletter
 		</h3>
 		<p class="">
 			Join our mailing list to receive latest information about our
 			upcoming classes and promotions
 		</p>
-		<form action="" method="post" class="flex flex-col space-y-6 max-w-md">
+		<form action="" method="post" class="mx-auto w-1/2 md:flex flex-col space-y-4">
 			{% csrf_token %}
 			<input
 				class="rounded-lg bg-gray-200 shadow border py-2 px-4 outline-none focus:ring ring-gray-600"
@@ -122,7 +107,7 @@
 				name="email"
 				placeholder="Email address"
 			/>
-			{% include "_primary_btn.html" with value="Join" %}
+			<button class="px-12 py-2 rounded-lg bg-purple-900 text-gray-100 font-medium shadow-md focus:ring focus:ring-purple-400 outline-none hover:bg-purple-700">Subscribe</button>
 		</form>
 	</section>
 </main>

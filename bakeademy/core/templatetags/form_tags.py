@@ -18,6 +18,11 @@ def Dict(*args):
     return d
 
 
+@register.filter
+def dictkey(_dict, key):
+    return _dict.get(key)
+
+
 @register.filter(name='addclass')
 def addclass(value, klass):
     return value.as_widget(attrs={'class': klass})

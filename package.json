@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "postcss assets/tailwind.css -o static/css/styles.css",
     "build:prod": "NODE_ENV=production npm run build",
-    "t:build": "tailwindcss -i assets/tailwind.css -o static/css/styles.css"
+    "build:t": "tailwindcss -i assets/tailwind.css -o static/css/styles.css",
+    "build:tw": "tailwindcss -i assets/tailwind.css -o static/css/styles.css --watch"
   },
   "keywords": [],
   "author": "",
